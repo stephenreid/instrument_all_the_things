@@ -4,7 +4,7 @@ on: push
 
 jobs:
   test-ruby:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: getterminus/ruby-ci-image:2.6-je-20190205
     steps:
