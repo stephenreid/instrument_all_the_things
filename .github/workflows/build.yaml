@@ -8,10 +8,6 @@ jobs:
     container:
       image: getterminus/ruby-ci-image:2.6-je-20190205
     steps:
-      - name: Install SSH Key
-        uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ secrets.GH_ACTIONS_SSH_PRIVATE_KEY }}
       - name: Pull
         uses: actions/checkout@v2
       - run: |
