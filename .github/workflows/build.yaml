@@ -5,11 +5,12 @@ on: push
 jobs:
   test-ruby:
     runs-on: ubuntu-latest
-    container:
-      image: getterminus/ruby-ci-image:2.6-je-20190205
     steps:
       - name: Pull
         uses: actions/checkout@v2
-      - run: |
-          bundle check --path=/usr/local/bundle || bundle --local --path=/usr/local/bundle
-          bundle exec rspec
+      - name: Test
+        uses: docker://getterminus/ruby-ci-image:2.6-je-20190205
+        with:
+          args: |
+            bash -c "bundle check --path=/usr/local/bundle || bundle --local --path=/usr/local/bundle; \
+            bundle exec rspec"
